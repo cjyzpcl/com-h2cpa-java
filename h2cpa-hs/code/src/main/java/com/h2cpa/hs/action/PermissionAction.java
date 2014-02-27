@@ -28,12 +28,10 @@ public class PermissionAction extends CommonBaseAction {
 		if (!serverCode.equals(securityCode)) {
 			jsonData.put("message", "验证码输入错误");
 		}
-		
 		result = JSONObject.fromObject(jsonData);
-		
 		return SUCCESS;
 	}
-
+	
 	// getter setter
 
 	public Map<String, Object> getRequest() {

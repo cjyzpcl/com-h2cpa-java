@@ -12,6 +12,13 @@
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
+		
+		<global-results>
+			<result name="Exception">/h2cpa/exception.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="Exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
 	
 		<!-- 权限管理 -->
 	

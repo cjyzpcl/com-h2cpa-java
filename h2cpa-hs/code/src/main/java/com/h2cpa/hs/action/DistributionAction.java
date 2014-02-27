@@ -59,6 +59,11 @@ public class DistributionAction extends CommonBaseAction {
 		return SUCCESS;
 	}
 	
+	public String loginOut() throws Exception {
+		session.clear();
+		return SUCCESS;
+	}
+	
 	/*----------权限管理开始----------*/
 	
 	/**

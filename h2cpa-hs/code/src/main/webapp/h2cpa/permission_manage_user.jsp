@@ -15,6 +15,6 @@
 	</head>
 	
 	<body>
-		user
+		
 	</body>
 </html>

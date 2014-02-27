@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="distribution" namespace="/distribution" extends="json-default">
+		<interceptors>
+			<interceptor name="PermissionInterceptor" class="com.funtl.permission.interceptor.PermissionInterceptor"></interceptor>
+			<interceptor-stack name="FuntlInterceptor">
+				<interceptor-ref name="PermissionInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	
+		<!-- 主页 -->
+		
+		<action name="main" class="com.h2cpa.hs.action.DistributionAction" method="main">
+			<interceptor-ref name="FuntlInterceptor"></interceptor-ref>
+			<result>/h2cpa/main.jsp</result>
+		</action>
+		
+		<!-- 权限管理 -->
+	
+		<action name="permission/*" class="com.h2cpa.hs.action.DistributionAction" method="permission_manage_{1}">
+			<interceptor-ref name="FuntlInterceptor"></interceptor-ref>
+			<result>/h2cpa/permission_manage_{1}.jsp</result>
+		</action>
+	</package>
+</struts>

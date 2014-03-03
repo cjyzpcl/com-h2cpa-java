@@ -74,6 +74,24 @@ public class DistributionAction extends CommonBaseAction {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 分组管理
+	 * @return
+	 * @throws Exception
+	 */
+	public String permission_manage_group() throws Exception {
+		return SUCCESS;
+	}
+	
+	/**
+	 * 分栏管理
+	 * @return
+	 * @throws Exception
+	 */
+	public String permission_manage_menu() throws Exception {
+		return SUCCESS;
+	}
+	
 	/*----------权限管理结束----------*/
 
 	// getter setter

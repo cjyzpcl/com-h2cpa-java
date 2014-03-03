@@ -196,6 +196,15 @@ var funtl_easyui_ajax = {
 				}
 			}
 		});
+	},
+	
+	onLoadError : function(data) {
+		var script = data.responseText;
+		if (script.indexOf("<script>") != -1) {
+			script = script.replace("<script>", "");
+			script = script.replace("</script>", "");
+			eval(script);
+		}
 	}
 };
 
@@ -220,6 +229,49 @@ var funtl_easyui_tab = {
 				content : content,
 				closable : hasClosable
 			});
+		}
+	}
+};
+
+/**
+ * 格式化工具
+ */
+var funtl_easyui_formatter = {
+	/**
+	 * 格式化日期时间
+	 * @param val
+	 * @param row
+	 * @returns
+	 */
+	datetime : function(val, row) {
+		return val.substring(0, 19);
+	},
+	
+	/**
+	 * 格式化性别
+	 * @param val
+	 * @param row
+	 * @returns {String}
+	 */
+	sex : function(val, row) {
+		if (val == 0) {
+			return "男";
+		} else {
+			return "女";
+		}
+	},
+	
+	/**
+	 * 格式化验证
+	 * @param val
+	 * @param row
+	 * @returns {String}
+	 */
+	verify : function(val, row) {
+		if (val == 0) {
+			return "启用";
+		} else {
+			return "禁用";
 		}
 	}
 };

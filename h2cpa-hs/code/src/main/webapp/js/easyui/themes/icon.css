@@ -59,6 +59,12 @@
 .icon-application-delete{
 	background:url('icons/application_delete.png') no-repeat center center;
 }
+.icon-application-side-list{
+	background:url('icons/application_side_list.png') no-repeat center center;
+}
+.icon-application-side-tree{
+	background:url('icons/application_side_tree.png') no-repeat center center;
+}
 
 .icon-page-white{
 	background:url('icons/page_white.png') no-repeat center center;
@@ -101,6 +107,18 @@
 
 .icon-chart-bar{
 	background:url('icons/chart_bar.png') no-repeat center center;
+}
+
+.icon-cog{
+	background:url('icons/cog.png') no-repeat center center;
+}
+
+.icon-user{
+	background:url('icons/user.png') no-repeat center center;
+}
+
+.icon-group{
+	background:url('icons/group.png') no-repeat center center;
 }
 
 .icon-mini-add{

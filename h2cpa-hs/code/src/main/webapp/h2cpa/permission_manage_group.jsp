@@ -50,6 +50,80 @@
 				}
 			}
 			
+			function user() {
+				var row = $("#dg_list").datagrid("getSelected");
+				if (row == null) {
+					funtl_easyui_dialog.info("请选择一条记录");
+				} else {
+					$("#dlg_user").dialog("open");
+					var data = {
+						"group.groupId" : row.groupId
+					};
+					funtl_easyui_ajax.post("permission/group/action/queryUserByGroup", data, function(data) {
+						if (data.message == null || data.message.length == 0) {
+							//分组用户
+							var results = $('#per_user').tree('getRoots');
+							
+							//清空勾选
+							if (results != null && results.length > 0) {
+								for (var x = 0 ; x < results.length ; x++) {
+									$('#per_resource').tree('uncheck', results[x].target);
+								}
+							}
+							
+							if (data.users != null && data.users.length > 0 && results != null && results.length > 0) {
+								for (var i = 0 ; i < data.users.length ; i++) {
+									for (var x = 0 ; x < results.length ; x++) {
+										if (data.users[i] == results[x].id) {
+											$('#per_user').tree('check', results[x].target);
+										}
+									}
+								}
+							}
+						} else {
+							funtl_easyui_dialog.info(data.message);
+						}
+					});
+				}
+			}
+			
+			function menu() {
+				var row = $("#dg_list").datagrid("getSelected");
+				if (row == null) {
+					funtl_easyui_dialog.info("请选择一条记录");
+				} else {
+					$("#dlg_menu").dialog("open");
+					var data = {
+						"group.groupId" : row.groupId
+					};
+					funtl_easyui_ajax.post("permission/group/action/queryMenuByGroup", data, function(data) {
+						if (data.message == null || data.message.length == 0) {
+							//分组分栏
+							var results = $('#per_menu').tree('getRoots');
+							
+							//清空勾选
+							if (results != null && results.length > 0) {
+								for (var x = 0 ; x < results.length ; x++) {
+									$('#per_resource').tree('uncheck', results[x].target);
+								}
+							}
+							
+							if (data.menus != null && data.menus.length > 0 && results != null && results.length > 0) {
+								for (var i = 0 ; i < data.menus.length ; i++) {
+									for (var x = 0 ; x < results.length ; x++) {
+										if (data.menus[i] == results[x].id) {
+											$('#per_menu').tree('check', results[x].target);
+										}
+									}
+								}
+							}
+						} else {
+							funtl_easyui_dialog.info(data.message);
+						}
+					});
+				}
+			}
+			
 			var dlgManagerBtn = [{
 			    text:"保存",
 			    iconCls:"icon-ok",
@@ -78,6 +152,74 @@
 			    	$("#dlg_manager").dialog("close");
 			    }
 			}];
+			
+			var dlgUserBtn = [{
+			    text:"保存",
+			    iconCls:"icon-ok",
+			    handler:function() {
+			    	var row = $("#dg_list").datagrid("getSelected");
+			    	var userIds = "";
+			    	var nodes = $('#per_user').tree('getChecked');
+			    	if (nodes != null && nodes.length > 0) {
+			    		for (var i = 0 ; i < nodes.length ; i++) {
+			    			userIds += nodes[i].id + ";";
+			    		}
+			    	}
+			    	
+			    	var data = {
+						"group.groupId" : row.groupId,
+						"userIds" : userIds
+					};
+			    	funtl_easyui_ajax.post("permission/group/action/insertUserGroup", data, function(data) {
+						if (data.message == null || data.message.length == 0) {
+							$("#dlg_user").dialog("close");
+							funtl_easyui_dialog.info("数据保存成功");
+						} else {
+							funtl_easyui_dialog.info(data.message);
+						}
+					});
+			    }
+			},{
+			    text:"取消",
+			    iconCls:"icon-cancel",
+			    handler:function() {
+			    	$("#dlg_user").dialog("close");
+			    }
+			}];
+			
+			var dlgMenuBtn = [{
+			    text:"保存",
+			    iconCls:"icon-ok",
+			    handler:function() {
+			    	var row = $("#dg_list").datagrid("getSelected");
+			    	var menuIds = "";
+			    	var nodes = $('#per_menu').tree('getChecked');
+			    	if (nodes != null && nodes.length > 0) {
+			    		for (var i = 0 ; i < nodes.length ; i++) {
+			    			menuIds += nodes[i].id + ";";
+			    		}
+			    	}
+			    	
+			    	var data = {
+						"group.groupId" : row.groupId,
+						"menuIds" : menuIds
+					};
+			    	funtl_easyui_ajax.post("permission/group/action/insertGroupMenu", data, function(data) {
+						if (data.message == null || data.message.length == 0) {
+							$("#dlg_menu").dialog("close");
+							funtl_easyui_dialog.info("数据保存成功");
+						} else {
+							funtl_easyui_dialog.info(data.message);
+						}
+					});
+			    }
+			},{
+			    text:"取消",
+			    iconCls:"icon-cancel",
+			    handler:function() {
+			    	$("#dlg_menu").dialog("close");
+			    }
+			}];
 		</script>
 		<title>h2cpa</title>
 	</head>
@@ -99,6 +241,8 @@
 		  		<a class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true" onclick="add();">新增</a>
 		  		<a class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="del();">删除</a>
 				<a class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true" onclick="edit();">编辑</a>
+				<a class="easyui-linkbutton" data-options="iconCls:'icon-group',plain:true" onclick="user();">配置用户</a>
+				<a class="easyui-linkbutton" data-options="iconCls:'icon-application-side-list',plain:true" onclick="menu();">配置分栏</a>
 			</div>
 	   	</div>
 		<script>
@@ -126,6 +270,14 @@
 		    		</tr>
 	   			</table>
 	   		</form>
+	   	</div>
+	   	
+	   	<div id="dlg_user" class="easyui-dialog" style="width:600px;height:400px;padding:10px" data-options="title:'用户',buttons:dlgUserBtn,modal:true,closed:true">
+	   		<ul id="per_user" class="easyui-tree" data-options="url:'permission/group/action/queryArray/userArray', checkbox:true"></ul>
+	   	</div>
+	   	
+	   	<div id="dlg_menu" class="easyui-dialog" style="width:600px;height:400px;padding:10px" data-options="title:'分栏',buttons:dlgMenuBtn,modal:true,closed:true">
+	   		<ul id="per_menu" class="easyui-tree" data-options="url:'permission/group/action/queryArray/menuArray', checkbox:true"></ul>
 	   	</div>
 	</body>
 </html>

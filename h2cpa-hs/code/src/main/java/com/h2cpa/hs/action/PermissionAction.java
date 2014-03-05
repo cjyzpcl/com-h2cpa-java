@@ -15,6 +15,7 @@ public class PermissionAction extends CommonBaseAction {
 	//参数
 	
 	private String securityCode;
+	private String groupId;
 
 	// action
 	
@@ -64,5 +65,13 @@ public class PermissionAction extends CommonBaseAction {
 
 	public void setSecurityCode(String securityCode) {
 		this.securityCode = securityCode;
+	}
+
+	public String getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(String groupId) {
+		this.groupId = groupId;
 	}
 }

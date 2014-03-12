@@ -39,5 +39,13 @@
 			<interceptor-ref name="FuntlInterceptor"></interceptor-ref>
 			<result>/h2cpa/permission_manage_{1}.jsp</result>
 		</action>
+		
+		<!-- 文章管理 -->
+		
+		<action name="article/*" class="com.h2cpa.hs.action.DistributionAction" method="article_manage_{1}">
+			<interceptor-ref name="FuntlInterceptor"></interceptor-ref>
+			<result>/h2cpa/article_manage_{1}.jsp</result>
+		</action>
+		
 	</package>
 </struts>

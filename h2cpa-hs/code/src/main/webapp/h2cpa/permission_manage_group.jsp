@@ -67,7 +67,7 @@
 							//清空勾选
 							if (results != null && results.length > 0) {
 								for (var x = 0 ; x < results.length ; x++) {
-									$('#per_resource').tree('uncheck', results[x].target);
+									$('#per_user').tree('uncheck', results[x].target);
 								}
 							}
 							
@@ -83,7 +83,7 @@
 						} else {
 							funtl_easyui_dialog.info(data.message);
 						}
-					});
+					}, false);
 				}
 			}
 			
@@ -104,7 +104,7 @@
 							//清空勾选
 							if (results != null && results.length > 0) {
 								for (var x = 0 ; x < results.length ; x++) {
-									$('#per_resource').tree('uncheck', results[x].target);
+									$('#per_menu').tree('uncheck', results[x].target);
 								}
 							}
 							

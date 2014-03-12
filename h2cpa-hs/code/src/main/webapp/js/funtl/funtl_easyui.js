@@ -273,5 +273,19 @@ var funtl_easyui_formatter = {
 		} else {
 			return "禁用";
 		}
+	},
+	
+	/**
+	 * 文章分类
+	 * @param val
+	 * @param row
+	 * @returns {String}
+	 */
+	artType : function(val, row) {
+		if (val == 0) {
+			return "系统";
+		} else if (val == 1) {
+			return "文章";
+		}
 	}
 };

@@ -159,7 +159,7 @@
 			    				resourceIds += parent.id + ";";
 			    			}
 			    			
-			    			if (nodes[i].id.indexOf("permission") != -1) {
+			    			if (nodes[i].id.indexOf("action") != -1) {
 			    				resourceOpts += nodes[i].id + ";";
 			    			}
 			    		}

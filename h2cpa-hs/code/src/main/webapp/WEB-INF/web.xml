@@ -35,7 +35,8 @@
 				struts-default.xml,struts-plugin.xml,
 				com/h2cpa/hs/config/struts.xml,
 				com/h2cpa/hs/config/struts-distribution.xml,
-				com/h2cpa/hs/config/struts-permission.xml
+				com/h2cpa/hs/config/struts-permission.xml,
+				com/h2cpa/hs/config/struts-article.xml
 			</param-value>
 		</init-param>
 	</filter>

@@ -54,6 +54,7 @@ public class DistributionAction extends CommonBaseAction {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String main() throws Exception {
 		PerUser admin = (PerUser) session.get("admin");
+		session.put("adminName", admin.getUserName());
 		
 		MenuDTO dto = null;
 		List<MenuDTO> dtos = new ArrayList<MenuDTO>();
@@ -217,6 +218,19 @@ public class DistributionAction extends CommonBaseAction {
 	}
 	
 	/*----------权限管理结束----------*/
+	
+	/*----------文章管理开始----------*/
+	
+	/**
+	 * 分类管理
+	 * @return
+	 * @throws Exception
+	 */
+	public String article_manage_category() throws Exception {
+		return SUCCESS;
+	}
+	
+	/*----------文章管理结束----------*/
 
 	// getter setter
 

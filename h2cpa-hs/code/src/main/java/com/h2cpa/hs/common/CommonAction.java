@@ -27,4 +27,8 @@ public abstract class CommonAction extends ActionSupport implements RequestAware
 	public abstract String delete() throws Exception;
 	public abstract String update() throws Exception;
 	public abstract String query() throws Exception;
+	
+	public String getAdminPath() {
+		return System.getProperty("ADMIN_PATH");
+	}
 }

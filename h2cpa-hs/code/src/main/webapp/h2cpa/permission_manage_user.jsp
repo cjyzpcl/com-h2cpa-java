@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<base href="<%=basePath%>" />
-		<jsp:include page="/h2cpa/resources.jsp" />
+		<jsp:include page="/resources.jsp" />
 		<script type="text/javascript">
 			function add() {
 				$("#dlg_manager").dialog("open");
@@ -50,7 +50,7 @@
 						funtl_easyui_ajax.post("permission/user/action/delete", data, function(data) {
 							if (data.message == null || data.message.length == 0) {
 								$("#dg_list").datagrid("reload");
-								funtl_easyui_dialog.info("数据删除成功");
+								funtl_easyui_dialog.info("数据已删除");
 							} else {
 								funtl_easyui_dialog.info(data.message);
 							}
@@ -74,7 +74,7 @@
 							$("#fm_manager").form("clear");
 							$("#dlg_manager").dialog("close");
 							$("#dg_list").datagrid("reload");
-							funtl_easyui_dialog.info("数据保存成功");
+							funtl_easyui_dialog.info("数据已保存");
 						} else {
 							funtl_easyui_dialog.info(data.message);
 						}
@@ -88,7 +88,7 @@
 			    }
 			}];
 		</script>
-		<title>h2cpa</title>
+		<title><%=System.getProperty("WEB_NAME") %></title>
 	</head>
 	
 	<body>

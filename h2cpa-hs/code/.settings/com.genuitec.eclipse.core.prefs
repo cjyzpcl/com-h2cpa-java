@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-validator.Checked=src/main/webapp/js/easyui,src/main/java/ehcache.xml
+validator.Checked=src/main/webapp/ckfinder,src/main/webapp/WEB-INF/config.xml,src/main/webapp/js/ckeditor,src/main/webapp/js/easyui,src/main/java/ehcache.xml
 validator.Revalidate=true
 validator.Unchecked=

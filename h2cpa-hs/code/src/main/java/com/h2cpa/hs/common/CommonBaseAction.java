@@ -22,4 +22,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public abstract class CommonBaseAction extends ActionSupport implements RequestAware, SessionAware {
 	private static final long serialVersionUID = 8282309383152956956L;
 	protected Map<String, Object> jsonData = new HashMap<String, Object>();
+	
+	public String getAdminPath() {
+		return System.getProperty("ADMIN_PATH");
+	}
 }

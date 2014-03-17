@@ -70,7 +70,7 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath*:c3p0.properties</value>
+				<value>classpath:com/h2cpa/hs/config/c3p0.properties</value>
 			</list>
 		</property>
 	</bean>

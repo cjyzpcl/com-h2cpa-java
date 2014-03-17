@@ -287,5 +287,9 @@ var funtl_easyui_formatter = {
 		} else if (val == 1) {
 			return "文章";
 		}
+	},
+	
+	imgLink : function(val, row) {
+		return "<img src='" + val + "' />";
 	}
 };

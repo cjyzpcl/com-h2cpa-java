@@ -22,12 +22,10 @@ import org.apache.log4j.NDC;
 public class IPFilter implements Filter {
 	private static Logger logger = Logger.getLogger(IPFilter.class);
 
-	@Override
 	public void destroy() {
 		
 	}
 
-	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -43,7 +41,6 @@ public class IPFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		
 	}

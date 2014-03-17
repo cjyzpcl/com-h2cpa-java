@@ -14,7 +14,7 @@
 		</interceptors>
 		
 		<global-results>
-			<result name="Exception">/h2cpa/exception.jsp</result>
+			<result name="Exception">/exception.jsp</result>
 		</global-results>
 		<global-exception-mappings>
 			<exception-mapping result="Exception" exception="java.lang.Exception"></exception-mapping>

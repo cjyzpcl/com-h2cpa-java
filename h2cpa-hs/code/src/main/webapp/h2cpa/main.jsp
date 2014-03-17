@@ -9,7 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<base href="<%=basePath%>" />
-		<jsp:include page="/h2cpa/resources.jsp" />
+		<jsp:include page="/resources.jsp" />
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$("#tree_menu").tree({
@@ -33,7 +33,7 @@
 				});
 			});
 		</script>
-		<title>h2cpa</title>
+		<title><%=System.getProperty("WEB_NAME") %></title>
 	</head>
 	
 	<body class="easyui-layout" data-options="fit:true">

@@ -9,7 +9,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<base href="<%=basePath%>" />
-		<jsp:include page="/h2cpa/resources.jsp" />
+		<jsp:include page="/resources.jsp" />
+		<script type="text/javascript" src="ckfinder/ckfinder.js"></script>
 		<script type="text/javascript">
 			function add() {
 				var row = $("#dg_list").datagrid("getSelected");
@@ -56,7 +57,7 @@
 						funtl_easyui_ajax.post("article/category/action/delete", data, function(data) {
 							if (data.message == null || data.message.length == 0) {
 								$("#dg_list").treegrid("reload");
-								funtl_easyui_dialog.info("数据删除成功");
+								funtl_easyui_dialog.info("数据已删除");
 							} else {
 								funtl_easyui_dialog.info(data.message);
 							}
@@ -80,7 +81,7 @@
 							$("#fm_manager").form("clear");
 							$("#dlg_manager").dialog("close");
 							$("#dg_list").treegrid("reload");
-							funtl_easyui_dialog.info("数据保存成功");
+							funtl_easyui_dialog.info("数据已保存");
 						} else {
 							funtl_easyui_dialog.info(data.message);
 						}
@@ -93,8 +94,23 @@
 			    	$("#dlg_manager").dialog("close");
 			    }
 			}];
+			
+			function BrowseServer() {
+				var finder = new CKFinder();
+				finder.BasePath = 'ckfinder/';
+				finder.selectActionFunction = SetFileField;
+				finder.popup();
+			}
+			
+			function SetFileField(fileUrl) {
+				$("#category_categorySimg").val(fileUrl);
+			}
+			
+			function showImg() {
+				window.open($("#category_categorySimg").val(),"图片预览","height=400,width=950,top=0,left=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no, status=no");
+			}
 		</script>
-		<title>h2cpa</title>
+		<title><%=System.getProperty("WEB_NAME") %></title>
 	</head>
 	
 	<body>
@@ -110,7 +126,6 @@
 			">
 			<thead>
 	  			<tr>
-	  				<th data-options="field:'categorySimg'">分类图标</th>
 	  				<th data-options="field:'categoryTitle'">分类标题</th>
 	  				<th data-options="field:'categorySubtitle'">分类说明</th>
 	  				<th data-options="field:'categoryType', formatter:funtl_easyui_formatter.artType">分类类型</th>
@@ -153,7 +168,11 @@
 	   				</tr>
 	   				<tr>
 	   					<td align="right">分类图标</td>
-	   					<td colspan="5"><input id="category_categorySimg" class="easyui-validatebox" type="text" name="category.categorySimg" data-options="" style="width:100%;"></input></td>
+	   					<td colspan="5">
+	   						<input id="category_categorySimg" class="easyui-validatebox" type="text" name="category.categorySimg" data-options="" style="width:82%;" readonly="readonly"></input>
+	   						<input type="button" value="浏览" onclick="BrowseServer( 'category_categorySimg' );" />
+	   						<input type="button" value="预览" onclick="showImg();" />
+	   					</td>
 	   				</tr>
 	   				<tr>
 	   					<td align="right">分类类型</td>

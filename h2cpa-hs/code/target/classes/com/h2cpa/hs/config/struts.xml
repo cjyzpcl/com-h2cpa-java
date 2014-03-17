@@ -19,11 +19,11 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<default-action-ref name="index"></default-action-ref>
 		<action name="index">
-			<result>index.jsp</result>
+			<result>/login.jsp</result>
 		</action>
 		
 		<action name="login">
-			<result>/h2cpa/login.jsp</result>
+			<result>/login.jsp</result>
 		</action>
 	</package>
 	

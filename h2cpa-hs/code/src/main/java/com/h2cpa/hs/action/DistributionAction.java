@@ -66,7 +66,6 @@ public class DistributionAction extends CommonBaseAction {
 			//分栏排序
 			
 			Collections.sort(menus, new Comparator() {
-				@Override
 				public int compare(Object o1, Object o2) {
 					PerGroupMenu t1 = (PerGroupMenu) o1;
 					PerGroupMenu t2 = (PerGroupMenu) o2;
@@ -90,7 +89,6 @@ public class DistributionAction extends CommonBaseAction {
 				//资源排序
 				
 				Collections.sort(resources, new Comparator() {
-					@Override
 					public int compare(Object o1, Object o2) {
 						PerMenuResource t1 = (PerMenuResource) o1;
 						PerMenuResource t2 = (PerMenuResource) o2;
@@ -227,6 +225,15 @@ public class DistributionAction extends CommonBaseAction {
 	 * @throws Exception
 	 */
 	public String article_manage_category() throws Exception {
+		return SUCCESS;
+	}
+	
+	/**
+	 * 文章管理
+	 * @return
+	 * @throws Exception
+	 */
+	public String article_manage_info() throws Exception {
 		return SUCCESS;
 	}
 	

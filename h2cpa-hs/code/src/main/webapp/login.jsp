@@ -22,7 +22,7 @@
 				var param = {
 					 "securityCode" : $("#securityCode").val()
 				};
-				funtl_easyui_ajax.post("permission/manage/action/verify", param, function(data) {
+				funtl_easyui_ajax.post("security/manage/action/verify", param, function(data) {
 					if (data.message == null || data.message.length == 0) {
 						funtl_easyui_form.submit("form_index", function(data) {
 							if (data.message == null || data.message.length == 0) {
